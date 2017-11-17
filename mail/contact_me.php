@@ -40,13 +40,13 @@ try {
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'br28.hostgator.com.br';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'contato@dominusgestao.com.br';                 // SMTP username
-    $mail->Password = '99522321saviola';                           // SMTP password
+    $mail->Username = 'email@contato.com.br';                 // SMTP username
+    $mail->Password = 'senha';                           // SMTP password
     $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 465;                                    // TCP port to connect to
     //Recipients
     $mail->setFrom($email_address, 'Contato Dominus Gestão');
-    $mail->addAddress('contato@dominusgestao.com.br', 'Contato Dominus');     // Add a recipient
+    $mail->addAddress('email@contato.com.br', 'Contato Dominus');     // Add a recipient
 //    $mail->addReplyTo('info@example.com', 'Information');
 //    $mail->addCC('cc@example.com');
 //    $mail->addBCC('bcc@example.com');
