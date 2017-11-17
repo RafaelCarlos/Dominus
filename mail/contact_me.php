@@ -35,32 +35,31 @@ $message = strip_tags(htmlspecialchars($_POST['message']));
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
     //Server settings
+    $mail->CharSet = "UTF-8";
     $mail->SMTPDebug = 2;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp1.example.com;smtp2.example.com';  // Specify main and backup SMTP servers
+    $mail->Host = 'br28.hostgator.com.br';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = 'contato@dominusgestao.com.br';                 // SMTP username
     $mail->Password = '99522321saviola';                           // SMTP password
     $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 465;                                    // TCP port to connect to
     //Recipients
-    $mail->setFrom($email_address, 'Mailer');
-    $mail->addAddress('shanglangjunior@hotmail.com', 'Rafael Carloss');     // Add a recipient
-    $mail->addAddress('ellen@example.com');               // Name is optional
-    $mail->addReplyTo('info@example.com', 'Information');
-    $mail->addCC('cc@example.com');
-    $mail->addBCC('bcc@example.com');
-
-
-
+    $mail->setFrom($email_address, 'Contato Dominus Gestão');
+    $mail->addAddress('contato@dominusgestao.com.br', 'Contato Dominus');     // Add a recipient
+//    $mail->addReplyTo('info@example.com', 'Information');
+//    $mail->addCC('cc@example.com');
+//    $mail->addBCC('bcc@example.com');
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->Subject = 'Contato da Página';
+    $mail->Body = 'Mensagem enviada da página <a href="www.dominusgestao.com.br">Dominus</a>'
+            . '.<br/><br/>' . $message . '<br/><br/>Nome: ' . $name . '<br/><br/>E-mail: ' .
+            $email_address . '<br/><br/>Telefone: ' . $phone;
+//    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Message has been sent';
+    echo 'Mensagem enviada com sucesso!';
 } catch (Exception $e) {
     echo 'Message could not be sent.';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
